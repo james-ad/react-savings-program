@@ -1,7 +1,30 @@
 import React, { Component } from "react";
 import "../css/Table.css";
+import TableEntry from "./TableEntry";
 
 class Table extends Component {
+  tableBody = React.createRef();
+  deleteButton = React.createRef();
+  renderTableEntry = () => {
+    const savingsAccount = this.props.savingsAccount;
+    return Object.keys(this.props.savingsAccount).map(entry => {
+      return (
+        <TableEntry
+          deleteCheck={this.props.deleteCheck}
+          id={entry}
+          checkAmount={savingsAccount[entry].check}
+          percentage={savingsAccount[entry].percentage}
+        />
+      );
+    });
+  };
+  componentDidMount() {
+    this.renderTableEntry();
+  }
+  componentDidUpdate() {
+    this.renderTableEntry();
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -13,13 +36,10 @@ class Table extends Component {
               <th className="amount-saved-column">Savings</th>
               <th className="remove-check-column">Remove Check</th>
             </tr>
-            <tr className="sample-table-row">
-              <td>$100</td>
-              <td>10%</td>
-              <td>$10</td>
-              <td>X</td>
-            </tr>
           </thead>
+          <tbody ref={this.tableBody} id="table-body">
+            {this.renderTableEntry()}
+          </tbody>
         </table>
       </div>
     );

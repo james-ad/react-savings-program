@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import "../css/CheckInput.css";
 import Button from "./Button";
+import { convertPercentage } from "../helpers";
+import { numberWithCommas } from "../helpers";
 
 class CheckInput extends Component {
+  currentCheckInput = React.createRef();
+  percentageInput = React.createRef();
+  percentageReadout = React.createRef();
+  amountSaved = React.createRef();
+
   render() {
+    const { currentCheckAmount, currentPercentage } = this.props;
     return (
       <div name="wrapper" id="wrapper">
         {/* 1. Number input  */}
@@ -11,19 +19,44 @@ class CheckInput extends Component {
           type="number"
           name="check-input-amount"
           id="check-input-amount"
-          placeholder="$100"
+          ref={this.currentCheckInput}
+          onKeyUp={event => {
+            if (event.key === "Enter") this.props.depositCheck();
+          }}
+          onInput={() => {
+            this.props.updateCheckValue(this.currentCheckInput.current.value);
+          }}
+          placeholder={"$" + currentCheckAmount}
         />
         {/* 2. Range input  */}
         <input
           type="range"
           name="check-input-percentage"
           id="check-input-percentage"
+          defaultValue={currentPercentage}
+          default={`${currentPercentage} %`}
+          ref={this.percentageInput}
+          onInput={() => {
+            this.props.updatePercentageValue(
+              this.percentageInput.current.value
+            );
+          }}
         />
         {/* 3. Percentage readout/div  */}
-        <div className="check-percentage-readout">10 %</div>
+        <div id="check-percentage-readout" ref={this.percentageReadout}>
+          {currentPercentage} %
+        </div>
         {/* 4. Number readout/div */}
-        <div className="amount-of-check-saved">$10</div>
-        <Button buttonName="Deposit Check" />
+        <div className="amount-saved" ref={this.amountSaved}>
+          $
+          {numberWithCommas(
+            convertPercentage(currentCheckAmount, currentPercentage)
+          )}
+        </div>
+        <Button
+          buttonName="Deposit Check"
+          buttonFunc={this.props.depositCheck}
+        />
       </div>
     );
   }
