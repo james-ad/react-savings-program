@@ -20,7 +20,6 @@ class TableEntry extends Component {
             <Button
               buttonFunc={this.props.deleteCheck}
               buttonName="&times;"
-              className="remove-check-button"
               id={this.props.id}
             >
               &times;

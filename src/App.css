@@ -1,6 +1,126 @@
-#app-wrapper {
-  display: flex;
-  flex-direction: column;
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2.2em;
+}
+
+h1,
+h2 {
+  color: white;
+  font-weight: lighter;
+  text-shadow: rgb(18, 22, 31) 1px 2px 3px;
+}
+
+input {
+  padding: 5px;
+  margin: 1%;
+  text-align: center;
+}
+
+table {
+  border-radius: 10px;
+  margin: 20px 0 5px 0;
+}
+
+table,
+th {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+th,
+td {
+  padding: 0 10px 0 10px;
+  border-radius: 5px;
+  font-size: 1.1em;
+}
+
+.app-button {
+  margin: 10px;
+  min-height: 15px;
+  background: linear-gradient(to top left, #3486e4, #c9dcf6);
+  border-color: #72a1de;
+  color: white;
+  padding: 8px;
+  letter-spacing: 1px;
+}
+
+.app-button:hover {
+  background: linear-gradient(to top, #3486e4, #c9dcf6);
+}
+
+.check-input-wrapper {
+  grid-area: input;
+  display: grid;
+  justify-items: center;
+  grid-template-rows: 1fr 0.5fr 0.5fr 0.5fr 1fr;
   align-items: center;
-  max-width: 1024px;
+  min-height: 150px;
+  font-size: 1.1rem;
+}
+
+.entry button {
+  min-width: 30px;
+  max-height: 20px;
+  font-size: 0.9rem;
+  padding: 0px;
+  margin: 0;
+}
+
+.savings-total-wrapper {
+  display: grid;
+  justify-items: center;
+}
+
+.total-savings-readout {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+#app-wrapper {
+  display: grid;
+  grid-template-columns: minmax(1fr, 80%);
+  grid-template-rows: 150px 200px 2fr minmax(1fr, 3fr);
+  grid-template-areas:
+    "header"
+    "input"
+    "table"
+    "total";
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100%;
+  padding-top: 20px;
+}
+
+#check-input,
+button {
+  border-radius: 20px;
+}
+
+#check-input {
+  text-align: center;
+  margin-bottom: 5px;
+  min-width: 160px;
+}
+
+@media (max-width: 700px) {
+  th,
+  td {
+    padding: 0 5px;
+    border-radius: 5px;
+    font-size: 1.1em;
+  }
 }

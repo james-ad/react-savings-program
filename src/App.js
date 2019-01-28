@@ -78,6 +78,7 @@ class App extends Component {
           updatePercentageValue={this.updatePercentageValue}
         />
         <Table
+          className={"table-component"}
           currentCheckAmount={this.state.currentCheckAmount}
           deleteCheck={this.deleteCheck}
           depositCheck={this.depositCheck}

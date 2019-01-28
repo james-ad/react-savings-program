@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import "../css/SavingsTotal.css";
 import Button from "./Button";
 import { numberWithCommas } from "../helpers";
 
 class SavingsTotal extends Component {
   render() {
     return (
-      <div className="wrapper">
+      <div className="savings-total-wrapper">
         <h2>Savings Total</h2>
         <div className="total-savings-readout">
           ${numberWithCommas(this.props.renderSavingsTotal().toFixed(2))}

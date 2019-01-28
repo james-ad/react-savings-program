@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../css/Table.css";
 import TableEntry from "./TableEntry";
 
 class Table extends Component {
@@ -27,7 +26,7 @@ class Table extends Component {
 
   render() {
     return (
-      <div className="wrapper">
+      <div className="table-wrapper">
         <table className="checks-table">
           <thead className="table-heading">
             <tr className="table-heading-row">

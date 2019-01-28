@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../css/CheckInput.css";
 import Button from "./Button";
 import { convertPercentage } from "../helpers";
 import { numberWithCommas } from "../helpers";
@@ -13,12 +12,12 @@ class CheckInput extends Component {
   render() {
     const { currentCheckAmount, currentPercentage } = this.props;
     return (
-      <div name="wrapper" id="wrapper">
+      <div className="check-input-wrapper" name="wrapper" id="wrapper">
         {/* 1. Number input  */}
         <input
           type="number"
-          name="check-input-amount"
-          id="check-input-amount"
+          name="check-input"
+          id="check-input"
           ref={this.currentCheckInput}
           onKeyUp={event => {
             if (event.key === "Enter") this.props.depositCheck();
